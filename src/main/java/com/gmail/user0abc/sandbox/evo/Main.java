@@ -12,14 +12,14 @@ import java.util.Random;
 public class Main
 {
     static int N = 1000;
-    static int gens = 5000;
+    static int gens = 100000;
     static StringBuilder builder = new StringBuilder();
 
     public static void main(String[] args)
     {
         long t = System.currentTimeMillis();
         prn("gen\ttime\th\td");
-        new Main().runNGens(gens, new Dove().setMaxH(10f).setMaxD(5f));
+        new Main().runNGens(gens, new Dove().setMaxH(100f).setMaxD(25f));
         prn("time = " + (System.currentTimeMillis() - t) + " ms");
         try
         {
