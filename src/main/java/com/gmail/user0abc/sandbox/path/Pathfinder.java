@@ -6,7 +6,7 @@ public class Pathfinder
 {
     public static void main(String[] arg)
     {
-        TheMap test1 = new PathfinderTest().runMap(15, 80, 300, new SimplePathFinder());
+        TheMap test1 = new PathfinderTest().runMap(10, 20, 50, new LeePathFinder());
         printMap(test1);
     }
 
@@ -19,6 +19,10 @@ public class Pathfinder
             for(int j = 0; j < map.sizeY; j++){
                 if(map.tile(i,j).blocked){
                     b.append("X");
+                }else if(map.tile(i,j).start){
+                    b.append("A");
+                }else if(map.tile(i,j).finish){
+                    b.append("B");
                 }else if(map.tile(i,j).path){
                     b.append("o");
                 }else{
