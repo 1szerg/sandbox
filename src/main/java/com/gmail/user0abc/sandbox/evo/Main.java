@@ -17,6 +17,18 @@ public class Main
 
     public static void main(String[] args)
     {
+        Object ob = null;
+        String n = null;
+        Double d = 125.3d;
+//        Long lo = (Long) ob;
+//        int f=5;
+//        prn(String.format("lo=%1$d-%2$d-%3$d-%4$d",1,2,3,4));
+//        prn(">> "+((Long)(long)f));
+        prn(""+d.longValue());
+
+    }
+
+    private void getTest(){
         long t = System.currentTimeMillis();
         prn("gen\ttime\th\td");
         new Main().runNGens(gens, new Dove().setMaxH(100f).setMaxD(25f));
