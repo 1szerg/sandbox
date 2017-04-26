@@ -2,53 +2,40 @@ package com.gmail.user0abc.sandbox.misc;/* $Id$
  * Created by sergii.ivanov on 3/7/2017.
  */
 
+import java.io.*;
+
 import static com.gmail.user0abc.sandbox.Util.prn;
 
 public class Test
 {
-    public static final String FOO = "foo";
-    public static void main(String[] arg)
+    public static void main(String[] arg) throws InterruptedException
     {
-        //testNullPointer();
-        testSwitchString("KG");
-        testSwitchString("foo");
-        testSwitchString("---");
-    }
-
-    private static int testSwitchString(String in)
-    {
-        prn("testing "+in);
-        WeightUnitOfMeasure wum = WeightUnitOfMeasure.byValue(in);
-        prn(" wum = "+wum);
-        switch(wum)
-        {
-            case KILOGRAMS:
-                return 1;
-            case LONG_TONS:
-                return 0;
-        }
-        switch(in)
-        {
-            case FOO:
-            case "GO":
-                return -1;
-            default:
-                return 0;
+        for(int i = 0; i<10; i++){
+            prn(testNullPointer());
+            Thread.currentThread().sleep(9L);
         }
     }
 
-    private static void testNullPointer()
+    private static String testNullPointer()
     {
+        File f = new File("travel-docs-ua-_0001.jpg");
+        prn("reading "+f.getAbsolutePath());
+        try(InputStream stream = new FileInputStream(f)){
 
-        try
-        {
-            String bebe = System.currentTimeMillis() % 2 == 0 ? null : "";
-            int l = bebe.length();
+            byte[] bytes = new byte[1024];
+            stream.read(bytes);
+            return bytes.toString();
+
         }
-        catch(Exception e)
-        {
-            System.out.println("null");
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return "error";
+//        finally {
+//            return "finally";
+//        }
 
     }
 
