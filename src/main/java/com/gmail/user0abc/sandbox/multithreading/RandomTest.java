@@ -2,21 +2,25 @@ package com.gmail.user0abc.sandbox.multithreading;/* $Id$
  * Created by sergii.ivanov on 4/23/2017.
  */
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import static com.gmail.user0abc.sandbox.Util.prn;
 
 public class RandomTest
 {
-    static int N = 100;
-    static int MAX = 10000000;
+    static int N = 100000;
+    static int MAX = 100000;
 
     public static void main(String[] args)
     {
-        while(N < MAX)
+        while(N <= MAX)
         {
             prn("Test with " + N + " iterations");
             new RandomTest().doTest("simpleLoop", () -> new RandomTest().simpleLoop());
@@ -39,7 +43,7 @@ public class RandomTest
         ExecutorService service = Executors.newFixedThreadPool(8);
         for(int i = 0; i < N; i++)
         {
-            service.submit(new Callable<Double>()
+            Future<Double> res = service.submit(new Callable<Double>()
             {
                 @Override
                 public Double call() throws Exception
@@ -47,35 +51,52 @@ public class RandomTest
                     return new Calculator().calculate();
                 }
             });
+
         }
         service.shutdown();
+        try
+        {
+            service.awaitTermination(120l, TimeUnit.SECONDS);
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void simpleRunnable()
     {
-        Thread[] pool = new Thread[N];
+        final int maxThreads = 8;
+        ThreadGroup group = new ThreadGroup("pool");
+        List<Thread> pool = new ArrayList<>(N);
         for(int i = 0; i < N; i++)
         {
-            pool[i] = new Thread(new Runnable()
+            while(group.activeCount() > maxThreads){
+                for(Thread t: pool)
+                {
+                    if(t != null && t.isAlive()){
+                        try
+                        {
+                            t.join();
+                            //pool.remove(t);
+                        }
+                        catch(InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            Thread t = new Thread(group, new Runnable()
             {
                 @Override
                 public void run()
                 {
                     new Calculator().calculate();
                 }
-            });
-            pool[i].start();
-        }
-        for(Thread t : pool)
-        {
-            try
-            {
-                t.join();
-            }
-            catch(InterruptedException e)
-            {
-                e.printStackTrace();
-            }
+            },"t " + i);
+            pool.add(t);
+            t.start();
         }
     }
 
