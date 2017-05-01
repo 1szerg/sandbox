@@ -8,4 +8,8 @@ public class Util
         System.out.println(m);
     }
 
+    public static void line(String m){
+        System.out.print(m);
+    }
+
 }
