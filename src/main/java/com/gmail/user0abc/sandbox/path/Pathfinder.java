@@ -2,6 +2,8 @@ package com.gmail.user0abc.sandbox.path;/* {ID}
  * Created by sergii.ivanov on 2/21/2017.
  */
 
+import static com.gmail.user0abc.sandbox.Util.prn;
+
 public class Pathfinder
 {
     public static void main(String[] arg)
@@ -33,10 +35,4 @@ public class Pathfinder
         }
 
     }
-
-    public static void prn(String s)
-    {
-        System.out.println(s);
-    }
-
 }

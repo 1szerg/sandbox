@@ -5,7 +5,7 @@ package com.gmail.user0abc.sandbox.path;/* {ID}
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.gmail.user0abc.sandbox.path.Pathfinder.prn;
+import static com.gmail.user0abc.sandbox.Util.prn;
 
 public class LeePathFinder implements PathFinderEngine
 {
