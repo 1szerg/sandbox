@@ -11,8 +11,8 @@ import static com.gmail.user0abc.sandbox.Util.prn;
  */
 public class Complexity {
     private static final Integer N = 10000;
-    private static final int[] tests = {100, 10000};
-    private static long SORTTIMEOUT = 600000l;
+    private static final int[] tests = {1000, 100000, 1000000};
+    private static long SORTTIMEOUT = 60000L;
     static boolean interrupted, stackOverflow;
 
     public static void main(String[] arr) {
@@ -23,8 +23,8 @@ public class Complexity {
         List<DataGenerator> generators = new ArrayList<>();
         generators.add(new ReversedNumbers());
         generators.add(new PlainNumbers());
-        generators.add(new RandomNumbers(0l));
-        generators.add(new RandomNumbers(1000000l));
+        generators.add(new RandomNumbers(0L));
+        generators.add(new RandomNumbers(1000000L));
 
         List<Sorter<Integer>> sorters = new ArrayList<>();
         sorters.add(new BubbleSorter<>());
@@ -34,6 +34,7 @@ public class Complexity {
         sorters.add(new QuickSorter<>());
         sorters.add(new QuickSorter2<>());
         sorters.add(new HeapSorter<>());
+        sorters.add(new QuickSorter2Multithreaded<>());
 
         for (Sorter sorter : sorters) {
             for (DataGenerator generator : generators) {
