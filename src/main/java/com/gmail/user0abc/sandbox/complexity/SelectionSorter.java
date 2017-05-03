@@ -1,20 +1,20 @@
 package com.gmail.user0abc.sandbox.complexity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Sergii Ivanov
  */
 public class SelectionSorter<T extends Comparable> implements Sorter<T> {
-    private int op=0, it=0;
+    private int op = 0, it = 0;
+
     @Override
     public List<T> sort(List<T> arr) {
-        for(int i = 0; i < arr.size(); i++){
+        for (int i = 0; i < arr.size(); i++) {
             int lowIndex = i;
-            for(int j = i+1; j < arr.size(); j++){
+            for (int j = i + 1; j < arr.size(); j++) {
                 it++;
-                if(arr.get(lowIndex).compareTo(arr.get(j)) > 0){
+                if (arr.get(lowIndex).compareTo(arr.get(j)) > 0) {
                     lowIndex = j;
                 }
             }

@@ -17,7 +17,7 @@ public class HeapSorter<T extends Comparable> implements Sorter<T> {
 
     private List<T> heapSort(List<T> arr) {
         buildHeap(arr);
-        for(int i=n; i>0; i--){
+        for (int i = n; i > 0; i--) {
             swap(arr, 0, i);
             n--;
             maxHeap(arr, 0);
@@ -26,8 +26,8 @@ public class HeapSorter<T extends Comparable> implements Sorter<T> {
     }
 
     private void buildHeap(List<T> arr) {
-        n = arr.size()-1;
-        for(int i = n/2; i>= 0; i--){
+        n = arr.size() - 1;
+        for (int i = n / 2; i >= 0; i--) {
             it++;
             maxHeap(arr, i);
         }
@@ -37,13 +37,13 @@ public class HeapSorter<T extends Comparable> implements Sorter<T> {
         int left = 2 * edge;
         int right = 2 * edge + 1;
         int largest = edge;
-        if(left <= n && arr.get(left).compareTo(arr.get(edge)) > 0){
+        if (left <= n && arr.get(left).compareTo(arr.get(edge)) > 0) {
             largest = left;
         }
-        if(right <= n && arr.get(right).compareTo(arr.get(largest)) > 0){
+        if (right <= n && arr.get(right).compareTo(arr.get(largest)) > 0) {
             largest = right;
         }
-        if(largest != edge){
+        if (largest != edge) {
             swap(arr, edge, largest);
             op++;
             maxHeap(arr, largest);

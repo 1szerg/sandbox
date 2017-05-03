@@ -5,18 +5,17 @@ import java.util.List;
 /**
  * @author Sergii Ivanov
  */
-public class InsertionSorter<T extends Comparable> implements Sorter<T>
-{
-    private int op=0, it=0;
+public class InsertionSorter<T extends Comparable> implements Sorter<T> {
+    private int op = 0, it = 0;
+
     @Override
-    public List<T> sort(List<T> arr)
-    {
-        for(int i = 1; i < arr.size(); i++){
-            if(arr.get(i-1).compareTo(arr.get(i)) > 0){
+    public List<T> sort(List<T> arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr.get(i - 1).compareTo(arr.get(i)) > 0) {
                 it++;
-                for(int j = i; j > 0 && (arr.get(j-1).compareTo(arr.get(j)) > 0); j--){
+                for (int j = i; j > 0 && (arr.get(j - 1).compareTo(arr.get(j)) > 0); j--) {
                     it++;
-                    swap(arr, j, j-1);
+                    swap(arr, j, j - 1);
                     op++;
                 }
             }
@@ -25,14 +24,12 @@ public class InsertionSorter<T extends Comparable> implements Sorter<T>
     }
 
     @Override
-    public int getIterations()
-    {
+    public int getIterations() {
         return it;
     }
 
     @Override
-    public int getOperations()
-    {
+    public int getOperations() {
         return op;
     }
 

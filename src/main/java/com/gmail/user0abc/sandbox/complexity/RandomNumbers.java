@@ -18,7 +18,7 @@ public class RandomNumbers implements DataGenerator {
     public List<Integer> generateData(int n) {
         Random r = new Random(seed);
         List<Integer> arr = new ArrayList<>(n);
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             arr.add(r.nextInt(n));
         }
         return arr;

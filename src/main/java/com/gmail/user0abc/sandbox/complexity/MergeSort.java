@@ -13,21 +13,21 @@ public class MergeSort {
     private static final int N = 10000;
     private int[] numbers;
     private int[] helper;
-    public int ops=0, its=0, deepest=0;
+    public int ops = 0, its = 0, deepest = 0;
 
     private int number;
 
     public static void main(String[] ar) {
         Random r = new Random(0l);
         int[] arr = new int[N];
-        for(int i = 0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             arr[i] = r.nextInt(N);
         }
         MergeSort mergeSort = new MergeSort();
         mergeSort.sort(arr);
         List<Integer> l = new ArrayList<>();
-        for(int v: arr)l.add(v);
-        prn("done its="+mergeSort.its+" depth="+mergeSort.deepest);
+        for (int v : arr) l.add(v);
+        prn("done its=" + mergeSort.its + " depth=" + mergeSort.deepest);
     }
 
     public void sort(int[] values) {
@@ -39,7 +39,7 @@ public class MergeSort {
 
     private void mergesort(int low, int high) {
         int lvl = Thread.currentThread().getStackTrace().length;
-        if(lvl > deepest) deepest = lvl;
+        if (lvl > deepest) deepest = lvl;
         its++;
         // check if low is smaller than high, if not then the array is sorted
         if (low < high) {

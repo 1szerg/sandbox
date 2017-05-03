@@ -11,23 +11,23 @@ import java.util.Map;
 public class Statistics {
     List<Record> log = new ArrayList<>();
 
-    void addRecord(Sorter sorter, DataGenerator dataGenerator, int n, long time){
+    void addRecord(Sorter sorter, DataGenerator dataGenerator, int n, long time) {
         log.add(new Record(dataGenerator, n, sorter, time));
     }
 
     public String statsBySorter() {
         StringBuilder sb = new StringBuilder();
         Map<Class, List<Record>> pivot = new HashMap<>();
-        for(Record r: log){
-            if(!pivot.containsKey(r.sorter.getClass())){
+        for (Record r : log) {
+            if (!pivot.containsKey(r.sorter.getClass())) {
                 pivot.put(r.sorter.getClass(), new ArrayList<>());
             }
             pivot.get(r.sorter.getClass()).add(r);
         }
-        for(Class k: pivot.keySet()){
+        for (Class k : pivot.keySet()) {
             sb.append(k.getSimpleName()).append("\t");
             int totalTime = 0;
-            for(Record r: pivot.get(k)){
+            for (Record r : pivot.get(k)) {
                 totalTime += r.time;
             }
             sb.append(totalTime).append("\t").append(totalTime / pivot.get(k).size()).append("\n");
@@ -35,7 +35,7 @@ public class Statistics {
         return sb.toString();
     }
 
-    private static class Record{
+    private static class Record {
         Sorter sorter;
         DataGenerator dataGenerator;
         int n;
@@ -47,4 +47,5 @@ public class Statistics {
             this.sorter = sorter;
             this.time = time;
         }
-    }}
+    }
+}

@@ -1,7 +1,6 @@
 package com.gmail.user0abc.sandbox.complexity;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Sergii Ivanov
@@ -14,7 +13,7 @@ public class QuickSorter2Multithreaded<T extends Comparable> implements Sorter<T
 
     @Override
     public List<T> sort(List<T> arr) {
-        if(arr.size() > THRESHOLD+1){
+        if (arr.size() > THRESHOLD + 1) {
             leftThread = new ThreadLocal<>();
             rightThread = new ThreadLocal<>();
         }
@@ -40,7 +39,7 @@ public class QuickSorter2Multithreaded<T extends Comparable> implements Sorter<T
             }
         }
         if (start < right) {
-            if(right-start > THRESHOLD){
+            if (right - start > THRESHOLD) {
                 final int fStart = start;
                 final int fEnd = right;
                 Thread t1 = new Thread(() -> {
@@ -48,31 +47,31 @@ public class QuickSorter2Multithreaded<T extends Comparable> implements Sorter<T
                 });
                 rightThread.set(t1);
                 t1.start();
-            }else{
+            } else {
                 quickSort(arr, start, right);
             }
         }
         if (left < end) {
-            if(end-left > THRESHOLD){
+            if (end - left > THRESHOLD) {
                 final int fStart = left;
                 final int fEnd = end;
-                Thread t2 = new Thread(()->{
+                Thread t2 = new Thread(() -> {
                     quickSort(arr, fStart, fEnd);
                 });
                 leftThread.set(t2);
                 t2.start();
-            }else {
+            } else {
                 quickSort(arr, left, end);
             }
         }
-        if(leftThread != null && leftThread.get() != null){
+        if (leftThread != null && leftThread.get() != null) {
             try {
                 leftThread.get().join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if(rightThread != null && rightThread.get() != null){
+        if (rightThread != null && rightThread.get() != null) {
             try {
                 rightThread.get().join();
             } catch (InterruptedException e) {

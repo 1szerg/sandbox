@@ -10,7 +10,7 @@ public class PlainNumbers implements DataGenerator {
     @Override
     public List generateData(int n) {
         List<Integer> arr = new ArrayList<>(n);
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             arr.add(i);
         }
         return arr;

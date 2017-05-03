@@ -5,9 +5,10 @@ import java.util.List;
 /**
  * @author Sergii Ivanov
  */
-public interface Sorter<T extends Comparable>
-{
+public interface Sorter<T extends Comparable> {
     List<T> sort(List<T> arr);
+
     int getIterations();
+
     int getOperations();
 }
