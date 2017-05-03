@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Sergii Ivanov
  */
-public class SimpleSorter<T extends Comparable> implements Sorter<T> {
+public class SelectionSorter<T extends Comparable> implements Sorter<T> {
     private int op=0, it=0;
     @Override
     public List<T> sort(List<T> arr) {
