@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Tic Tac Toe</title>
+        <meta name="description" content="Tic Tac Toe game">
+    </head>
+    <body>
+        <p>Let's play Tic Tak Toe</p>
+        <input id="start-x" type="button" value="Play as X" onclick="startAsX()">
+        <input id="start-o" type="button" value="Play as O" onclick="startAsO()">
+        <table>
+            <tr>
+                <td id="player-x">Select</td>
+                <td id="player-o"> your side</td>
+            </tr>
+        </table>
+        <table border="1">
+            <tr>
+                <td id="cell11"><img id="img11" src="img/blank.png" onclick="onTblClick(1,1)"></canvas></td>
+                <td id="cell12"><img id="img12" src="img/blank.png" onclick="onTblClick(1,2)"></canvas></td>
+                <td id="cell13"><img id="img13" src="img/blank.png" onclick="onTblClick(1,3)"></canvas></td>
+            </tr>
+            <tr>
+                <td id="cell21"><img id="img21" src="img/blank.png" onclick="onTblClick(2,1)"></canvas></td>
+                <td id="cell22"><img id="img22" src="img/blank.png" onclick="onTblClick(2,2)"></canvas></td>
+                <td id="cell23"><img id="img23" src="img/blank.png" onclick="onTblClick(2,3)"></canvas></td>
+            </tr>
+            <tr>
+                <td id="cell31"><img id="img31" src="img/blank.png" onclick="onTblClick(3,1)"></canvas></td>
+                <td id="cell32"><img id="img32" src="img/blank.png" onclick="onTblClick(3,2)"></canvas></td>
+                <td id="cell33"><img id="img33" src="img/blank.png" onclick="onTblClick(3,3)"></canvas></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>Player </td>
+                <td id="player-score">0</td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td id="cpu-score">0</td>
+            </tr>
+        </table>
+        <div id="debug"></div>
+        <input id="savedData" type="hidden">
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
