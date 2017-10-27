@@ -10,8 +10,7 @@ import static com.gmail.user0abc.sandbox.Util.prn;
  * @author Sergii Ivanov
  */
 public class Complexity {
-    private static final Integer N = 10000;
-    private static final int[] tests = {1000, 100000, 1000000};
+    private static final int[] tests = {10000,1000000};
     private static long SORTTIMEOUT = 60000L;
     static boolean interrupted, stackOverflow;
 
@@ -24,16 +23,17 @@ public class Complexity {
         generators.add(new ReversedNumbers());
         generators.add(new PlainNumbers());
         generators.add(new RandomNumbers(0L));
-        generators.add(new RandomNumbers(1000000L));
+//        generators.add(new RandomNumbers(1000000L));
 
         List<Sorter<Integer>> sorters = new ArrayList<>();
-        sorters.add(new BubbleSorter<>());
-        sorters.add(new InsertionSorter<>());
+//        sorters.add(new BubbleSorter<>());
+//        sorters.add(new InsertionSorter<>());
+        sorters.add(new HeapSorter<>());
+//        sorters.add(new SelectionSorter<>());
         sorters.add(new MergeSorter<>());
-        sorters.add(new SelectionSorter<>());
+//        sorters.add(new MergeSorterMultithreaded<>());
         sorters.add(new QuickSorter<>());
         sorters.add(new QuickSorter2<>());
-        sorters.add(new HeapSorter<>());
         sorters.add(new QuickSorter2Multithreaded<>());
 
         for (Sorter sorter : sorters) {
@@ -59,7 +59,7 @@ public class Complexity {
                                 e.printStackTrace();
                             }
                             if (runner.isAlive()) {
-                                runner.stop();
+                                //runner.stop();
                                 interrupted = true;
                             }
                         }
@@ -92,8 +92,8 @@ public class Complexity {
     }
 
     static String formatOutput(Sorter sorter, DataGenerator generator, int n, long t, String status) {
-        return sorter.getClass().getSimpleName() + "\t" + status + "\t" + generator.getClass().getSimpleName() + "\t" + n + "\t" + t + "\tms\t" +
-                "it= \t" + sorter.getIterations() + "\t, op= \t" + sorter.getOperations();
+        return sorter.getClass().getSimpleName() + "\t" + status + "\t" + generator.getClass().getSimpleName() + "\t" + n + "\t" + t;
+        //+ "it= \t" + sorter.getIterations() + "\t, op= \t" + sorter.getOperations();
     }
 
     private static boolean verifySorted(List<Integer> t) {

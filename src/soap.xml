@@ -1,0 +1,37 @@
+<request>
+	<provisioningOrder>
+		<clientId>soapUI</clientId>
+		<clientCorrelationId>Corr-${=new Date().format("yyyy-MM-dd HH:mm:ss")}</clientCorrelationId>
+		<expectedCompletionDate>2017-12-01Z</expectedCompletionDate>
+		<provisioningOrderItem>
+			<serviceType>ipvpn:IPVPN</serviceType>
+			<serviceName>SyncService</serviceName>
+			<action>ADD</action>
+			<requestData>              
+			<nd:service xmlns:nd="urn:com:ericsson:schema:xml:oss:core:nd:data-types:1:0">
+				<dynamicAttributes>
+					<dynamicAttribute>
+						<groupName>customer</groupName>
+						<attributeName>ID</attributeName>
+						<stringAttributeValue>EuroBank</stringAttributeValue>
+					</dynamicAttribute>
+					<dynamicAttribute>
+						<groupName>mesh</groupName>
+						<attributeName>routeTarget</attributeName>
+						<stringAttributeValue>65000:200</stringAttributeValue>
+					</dynamicAttribute>
+				</dynamicAttributes>
+				<endPoint>
+					<name>Brussels-PE</name>
+				</endPoint>
+				<endPoint>
+					<name>London-PE</name>
+				</endPoint>
+				<endPoint>
+					<name>Paris-PE</name>
+				</endPoint>
+			</nd:service>
+			</requestData>
+		</provisioningOrderItem>
+	</provisioningOrder>
+</request>
