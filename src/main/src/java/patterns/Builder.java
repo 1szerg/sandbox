@@ -1,4 +1,4 @@
-package com.gmail.user0abc.sandbox.patterns.creational;
+package patterns;
 
 import static com.gmail.user0abc.sandbox.Util.prn;
 

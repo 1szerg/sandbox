@@ -23,7 +23,7 @@ public class SimpleMapTiles implements MapTiles
     public MapTile tileAt(int x, int y)
     {
         if(x < 0 || x > (wX - 1) || y < 0 || y > (wY - 1)){
-            throw new IndexOutOfBoundsException("Coordinates  Out of map size ");
+            throw new IndexOutOfBoundsException("Coordinates ("+x+", "+y+") out of map size ["+wX+", "+wY+"]");
         }
         return tiles[x][y];
     }
@@ -31,22 +31,31 @@ public class SimpleMapTiles implements MapTiles
     @Override
     public int sizeX()
     {
-        return 0;
+        return wX;
     }
 
     @Override
     public int sizeY()
     {
-        return 0;
+        return wY;
     }
 
     @Override
     public MapTiles fill()
     {
-        Arrays.fill(tiles, new );
-        for(int i = 0; i < wX; i++){
-            for(int y)
+        for(int x = 0; x < wX; x++){
+            for(int y = 0; y < wY; y++){
+                tiles[x][y] = new SimpleMapTile(x, y, 1, true);
+            }
         }
+        return this;
+    }
+
+    @Override
+    public MapTile setTileAt(int x, int y, MapTile mapTile)
+    {
+        MapTile old = tileAt(x, y);
+        tiles[x][y] = mapTile;
         return null;
     }
 }

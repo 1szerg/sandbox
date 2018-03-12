@@ -19,9 +19,14 @@ public class SimpleMapGenerator implements MapGenerator
     @Override
     public MapTiles makeMap(int widthX, int widthY, Random random)
     {
-        MapTiles map = new SimpleMapTiles(widthX, widthY).fill();
+        MapTiles map = new SimpleMapTiles(widthX, widthY);
         long sq = widthX * widthY;
-
-        return null;
+        for(int x = 0; x < widthX; x++){
+            for(int y = 0; y < widthY; y++){
+                boolean pass = random.nextFloat() > density;
+                map.setTileAt(x,y, new SimpleMapTile(x, y, pass ? random.nextInt(2) + 1 : -1, pass));
+            }
+        }
+        return map;
     }
 }

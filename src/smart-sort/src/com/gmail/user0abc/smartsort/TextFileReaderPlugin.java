@@ -11,7 +11,7 @@ public class TextFileReaderPlugin implements FileReaderPlugin
     private static int lettersRangeEnd = 128;
 
     @Override
-    public Set<String> readWordsfromFile(File doc)
+    public Set<String> readWordsFromFile(File doc)
     {
         try {
             FileInputStream inputStream = new FileInputStream(doc);

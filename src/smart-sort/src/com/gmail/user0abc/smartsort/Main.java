@@ -16,7 +16,7 @@ public class Main
             settings = readParams(arg);
         } catch (IllegalArgumentException e) {
             printError(e);
-            pringUsage();
+            printUsage();
             return;
         }
         if (settings.mode == SmartSortSettings.Mode.TRAIN) {
@@ -26,7 +26,7 @@ public class Main
         }
     }
 
-    private static void pringUsage()
+    private static void printUsage()
     {
         prn("Usage: smart-sort <-t|-s> <inputFolderPath> <outputFolderPath>");
     }

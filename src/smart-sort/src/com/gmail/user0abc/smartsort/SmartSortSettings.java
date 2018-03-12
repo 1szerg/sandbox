@@ -4,6 +4,10 @@ import java.io.File;
 
 public class SmartSortSettings
 {
+
+    static String dicName = "_abc.voc";
+    static String delimeter ="\n";
+
     public enum Mode
     {
         TRAIN, SORT;

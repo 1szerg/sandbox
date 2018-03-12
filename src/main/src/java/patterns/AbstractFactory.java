@@ -1,4 +1,4 @@
-package com.gmail.user0abc.sandbox.patterns.creational;
+package patterns;
 
 import java.util.Calendar;
 import java.util.Date;

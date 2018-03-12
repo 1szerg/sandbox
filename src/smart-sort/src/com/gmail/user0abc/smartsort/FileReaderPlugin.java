@@ -5,7 +5,7 @@ import java.util.Set;
 
 public interface FileReaderPlugin
 {
-    Set<String> readWordsfromFile(File doc);
+    Set<String> readWordsFromFile(File doc);
 
     boolean isFileSupported(File doc);
 }

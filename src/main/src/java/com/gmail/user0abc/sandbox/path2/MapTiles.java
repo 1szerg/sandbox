@@ -11,4 +11,6 @@ public interface MapTiles
     int sizeY();
 
     MapTiles fill();
+
+    MapTile setTileAt(int x, int y, MapTile mapTile);
 }
