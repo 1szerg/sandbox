@@ -25,19 +25,22 @@ public class Sorter
         Map<File, Set<String>> dics = readDics(topics);
         Set<FileReaderPlugin> plugins = SmartSorterContext.getPluginsManager().registeredPlugins;
         for(File inFile : in.listFiles()){
+            Log.log("-= "+inFile.getName()+" =-");
             for(FileReaderPlugin plugin : plugins){
                 if(plugin.isFileSupported(inFile)){
                     int maxScore = 0;
                     File target = null;
                     for (File dicKey : dics.keySet()){
                         int tempScore = getScore(plugin.readWordsFromFile(inFile), dics.get(dicKey));
+                        Log.log(" [S] "+inFile.getName()+" "+tempScore+" > "+dicKey);
                         if(tempScore > maxScore){
                             maxScore = tempScore;
                             target = dicKey;
                         }
                     }
                     if(maxScore > 0 && target != null){
-                        moveFile(inFile, target);
+                        Log.log("Moving "+inFile.getName()+" to "+target.getPath());
+                        //moveFile(inFile, target);
                     }
                 }
             }
@@ -47,7 +50,6 @@ public class Sorter
     private void moveFile(File inFile, File target)
     {
         try {
-            Log.log("Moving "+inFile.getName()+" to "+target.getPath());
             File newName = new File(target.getAbsolutePath()+"/"+inFile.getName());
             Files.move(inFile.toPath(), newName.toPath());
         } catch (IOException e) {
@@ -59,6 +61,7 @@ public class Sorter
     {
         Iterator<String> i1 = s1.iterator();
         Iterator<String> i2 = s2.iterator();
+        StringBuilder hits = new StringBuilder();
         int score = 0;
         if(i1.hasNext()){
             String w1 = i1.next().toLowerCase();
@@ -69,6 +72,7 @@ public class Sorter
                         score++;
                         w1=i1.next();
                         w2=i2.next();
+                        hits.append(w1).append(" ");
                     }else {
                         if(w1.compareTo(w2) > 0){
                             w2=i2.next();
@@ -79,6 +83,7 @@ public class Sorter
                 }
             }
         }
+        Log.log(" {H} hits: "+hits.toString());
         return score;
     }
 

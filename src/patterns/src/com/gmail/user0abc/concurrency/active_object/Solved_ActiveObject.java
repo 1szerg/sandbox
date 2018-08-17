@@ -3,6 +3,10 @@ package com.gmail.user0abc.concurrency.active_object;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+/*
+Add queue to control calls to sensitive methods. Put all calls into queue and run one-by-one.
+This spoils logic that expects old behaviour (see #spoiledLogic())
+ */
 public class Solved_ActiveObject
 {
 
@@ -13,60 +17,53 @@ public class Solved_ActiveObject
 
     class TestSubject extends Subject
     {
-        private BlockingQueue<Runnable> queue = new LinkedBlockingDeque<>();
-        private Thread dispatcher;
-        Subject parent = new Subject();
-        boolean active;
-        int callsCount = 0;
-        int call1 = 0;
-        int call2 = 0;
+        private BlockingQueue<Runnable> callsQueue = new LinkedBlockingDeque<>();
+        private Thread dispatcherThread;
+        private boolean activeFlag;
+        private int processedCallsCount = 0;
+        private int doSomethingCount = 0;
+        private int doSomethingElseCount = 0;
 
         @Override
-        void doSomething()
+        public void doSomething()
         {
-            queue.add(() -> {
-                parent.doSomething();
-                call1++;
+            callsQueue.add(() -> {
+                super.doSomething();
+                doSomethingCount++;
             });
         }
 
         @Override
-        void doSomethingElse()
+        public void doSomethingElse()
         {
-            queue.add(() -> {
-                parent.doSomethingElse();
-                call2++;
+            callsQueue.add(() -> {
+                super.doSomethingElse();
+                doSomethingElseCount++;
             });
-        }
-
-        @Override
-        double getVal()
-        {
-            return parent.getVal();
         }
 
         public void activate()
         {
-            active = true;
-            dispatcher = new Thread(() -> {
-                while (active) {
+            activeFlag = true;
+            dispatcherThread = new Thread(() -> {
+                while (activeFlag) {
                     try {
-                        queue.take().run();
-                        callsCount++;
+                        callsQueue.take().run();
+                        processedCallsCount++;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             });
-            dispatcher.start();
+            dispatcherThread.start();
         }
 
         public void deactivate()
         {
-            queue.add(() -> active = false);
+            callsQueue.add(() -> activeFlag = false);
             try {
-                dispatcher.join(1000);
-                System.out.println("Exiting after " + callsCount + " calls: " + call1 + " / " + call2);
+                dispatcherThread.join(1000);
+                System.out.println("Verify. Exiting after " + processedCallsCount + " calls: doSomethingCount = " + doSomethingCount + " / doSomethingElseCount = " + doSomethingElseCount);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -74,10 +71,9 @@ public class Solved_ActiveObject
 
     }
 
-    final Subject problem = new TestSubject();
-
     public void doDemo()
     {
+        System.out.println("Solved Active Object pattern: decouples method execution from method invocation");
         final Subject subject = new TestSubject();
 
         ((TestSubject) subject).activate();
@@ -105,6 +101,19 @@ public class Solved_ActiveObject
 
         ((TestSubject) subject).deactivate();
 
+    }
+
+    // after converting into active object some code won't work
+    public void spoiledLogic(){
+        // this code was working before pattern implementation...
+        Subject oldSubject = new Subject();
+        oldSubject.doSomething();
+        assert(oldSubject.getVal()==1d);
+
+        // ... and then its broken by pattern implementation
+        Subject newSubject = new TestSubject();
+        newSubject.doSomething();
+        assert(newSubject.getVal()==1d);
     }
 
 }

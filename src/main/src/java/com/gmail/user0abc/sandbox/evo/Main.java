@@ -5,8 +5,8 @@ package com.gmail.user0abc.sandbox.evo;/* {ID}
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.rmi.server.ExportException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main
@@ -17,7 +17,8 @@ public class Main
 
     public static void main(String[] args)
     {
-        new Main().getTest();
+        //new Main().getTest();
+        new Main().caster();
     }
 
     private void getTest(){
@@ -71,5 +72,27 @@ public class Main
     {
         return new DefaultSim();
     }
+
+    private void caster(){
+        List<Class<?>> l1 = new ArrayList<>();
+        List<Class<Object>> l2 = new ArrayList<>();
+        List<Class> l3 = new ArrayList<>();
+
+        l1.add(Thread.class);
+
+        l2.add(Object.class);
+
+        l3.addAll(l1);
+        l3.add(System.class);
+
+        for(Class<?> o: l1)
+        {
+            l2.add((Class<Object>) o);
+        }
+
+        System.out.println("L1 [Thread] = " + l1);
+        System.out.println("L2 [Object + L1] = " + l2);
+        System.out.println("L3 [L1 + System] = " + l3);
+   }
 
 }

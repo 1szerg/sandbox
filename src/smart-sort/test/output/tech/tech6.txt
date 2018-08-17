@@ -1,0 +1,51 @@
+Oracle’s Mark Hurd: Risk, Complexity, Cost Are Driving Cloud Adoption
+
+Gap and Bloom Energy are among Oracle customers using cloud to support innovation and lower costs.
+
+By Michael Hickins
+
+Play Video
+Mark Hurd Oracle OpenWorld 2017 Keynote Highlights 10-2-2017
+Highlights from Oracle Chief Executive Officer Mark Hurd’s Oracle OpenWorld 2017 keynote on where we are now and where we’re headed in a cloud foundational world.
+
+Oracle CEO Mark Hurd discusses the many reasons customers are moving to the cloud.
+
+Stagnant economic growth in most of the business world, and the rapid pace of disruption across industries, is putting more pressure on CEOs to produce greater customer value (and shareholder returns) at lower cost.
+
+That combination of factors is driving companies to the cloud, which can free up resources for investment in customer-facing innovation, at an ever-increasing pace, Oracle CEO Mark Hurd said during his keynote Monday at Oracle OpenWorld. “The movement to cloud is an inevitable destination,” said Hurd. “This is how computing will evolve over the next several years.”
+
+In an example of how this is trending, companies are moving their application development and testing activities to the cloud at a rate of 20 percent per year, according to a survey by Dimensional Research. And the number of corporate-owned data centers declined by more than 15 percent over the past year, according to IDC Research.
+
+What you're really going to see is AI built directly into each of these work cases, each of these use cases. 
+—Oracle CEO Mark Hurd
+Hurd noted that corporate IT budgets continue to be flat in many companies. With more than 80 percent of those budgets typically allocated to things like patching, upgrading systems, and maintenance, that leaves little funding for investing in the kinds of modern applications and customer touch-points expected by consumers and business customers alike. Security concerns, moreover, drain even more from potential investments in innovation as data theft has become a board-level concern.
+
+The paradox of not enough investment in innovation on one hand and a more difficult economic landscape on the other is leading more companies to shift more of their IT workloads to cloud service providers like Oracle, which has an R&D budget of more than $5 billion.
+
+Business managers are saying, “I want to move this risk. I want to move this complexity. I want to move this cost,” Hurd said. “I want to move it from here to there; i.e., from you to me.”
+
+Security in the Cloud Stack
+
+Oracle has introduced more than 3,500 cloud-based applications and more than 125 cloud platform services over the past five years, Hurd said. Because Oracle has a single version of its cloud stack, it is also easier for Oracle to secure its cloud than it is for customers to do the same for their data centers, he added.
+
+Mark Hurd
+A challenging environment combined with the increased need for innovation is driving more companies to the cloud, says Oracle CEO Mark Hurd.
+
+This trend has been borne out by Oracle customers, who are moving to the cloud in large numbers. For some, like Caesar’s Entertainment, moving financial accounting software to Oracle Cloud allowed the company to save “millions and millions of dollars,” according to Caesar’s CEO Mark Frissora, who appeared in a video broadcast during the keynote.
+
+For Bloom Energy, a provider of green fuel cell technology, Oracle’s cloud-based financial and planning software has been instrumental in helping the company scale as it grows. The eight-year-old company now has one-quarter of the Fortune 100 as customers, according to CFO Randy Furr. The Oracle Cloud application suite has helped the company make use of more timely and accurate data “that has helped us keep up with that growth,” said Furr, who joined Hurd on the Oracle OpenWorld keynote stage.
+
+For Gap, Inc., which has some 1,300 company-owned stores in more than 90 countries, Oracle Retail Cloud is helping provide a unified customer experience across stores and a single ecommerce shopping experience across its brands, which include Banana Republic, Gap, Old Navy, and Intermix.
+
+“We’re using that as our strategic weapon,” said Gap EVP and CIO Paul Chapman, in a conversation with Hurd.
+
+
+Companies are moving their application development and testing to the cloud at 20 percent per year, while corporate-owned data centers declined by more than 15 percent over the past year.
+
+Chapman quipped that he wanted Gap to patch sport coats instead of its computer systems. “We have to get out of that business,” he said.
+
+AI Everywhere
+
+That sentiment is animating an increasing number of customers, and for good reason. Oracle’s R&D budget is going not only towards more reliable and secure cloud systems, but to innovations such as artificial intelligence that customers can use to further leverage Oracle’s technology spending on behalf of their own businesses.
+
+“In the end, what you're really going to see is AI built directly into each of these work cases, each of these use cases,” said Hurd. “It's infrastructure, platform, applications that are scaled and optimized, built on standards, cost less, [enable] more innovation, [and are] more secure with all sorts of new features and capabilities that are going to get integrated directly into the capabilities” of Oracle Cloud.

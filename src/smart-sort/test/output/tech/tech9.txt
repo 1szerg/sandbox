@@ -1,0 +1,12 @@
+29.3 MySQL Enterprise Security Overview
+
+MySQL Enterprise Edition provides plugins that implement authentication using external services:
+
+MySQL Enterprise Edition includes an authentication plugin that enables MySQL Server to use PAM (Pluggable Authentication Modules) to authenticate MySQL users. PAM enables a system to use a standard interface to access various kinds of authentication methods, such as Unix passwords or an LDAP directory. For more information, see Section 6.5.1.6, “PAM Pluggable Authentication”.
+
+MySQL Enterprise Edition includes an authentication plugin that performs external authentication on Windows, enabling MySQL Server to use native Windows services to authenticate client connections. Users who have logged in to Windows can connect from MySQL client programs to the server based on the information in their environment without specifying an additional password. For more information, see Section 6.5.1.7, “Windows Pluggable Authentication”.
+
+MySQL Enterprise Edition includes a keyring plugin that uses Oracle Key Vault as a back end for keyring storage. For more information, see Section 6.5.4, “The MySQL Keyring”.
+
+For other related Enterprise security features, see Section 29.4, “MySQL Enterprise Encryption Overview”.
+

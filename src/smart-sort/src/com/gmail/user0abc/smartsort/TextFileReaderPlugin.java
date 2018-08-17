@@ -1,9 +1,10 @@
 package com.gmail.user0abc.smartsort;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.HashSet;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class TextFileReaderPlugin implements FileReaderPlugin
 {
@@ -14,25 +15,15 @@ public class TextFileReaderPlugin implements FileReaderPlugin
     public Set<String> readWordsFromFile(File doc)
     {
         try {
-            FileInputStream inputStream = new FileInputStream(doc);
-            byte[] buffer = new byte[1024];
-            int len = -1;
-            Set<String> words = new HashSet<>();
-            while ((len = inputStream.read(buffer)) > 0) {
-                StringBuilder cache = new StringBuilder();
-                for (int i = 0; i < len; i++) {
-                    byte letter = buffer[i];
-                    if (letter <= lettersRangeEnd && letter >= lettersRangeStart) {
-                        cache.append((char)letter);
-                    } else {
-                        words.add(cache.toString().trim().toLowerCase());
-                        cache = new StringBuilder();
-                    }
-                }
-            }
+            Set<String> words = new TreeSet<>();
+            words.addAll(
+                    Arrays.asList(
+                            new String( Files.readAllBytes(doc.toPath())).toLowerCase().split("[^a-z]")
+                    )
+            );
             return words;
         } catch (Exception e) {
-            Log.log("Error " + e);
+            Log.log("Error: " + e);
         }
         return null;
     }

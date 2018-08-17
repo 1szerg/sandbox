@@ -8,14 +8,14 @@ public class Subject
         return val;
     }
 
-    void doSomething() {
+    public void doSomething() {
         val = 1.0;
         if(getVal() != 1d) {
             throw new RuntimeException("method doSomething() has been interfered by other method");
         }
     }
 
-    void doSomethingElse() {
+    public void doSomethingElse() {
         val = 2.0;
         if(getVal() != 2d){
             throw new RuntimeException("method doSomethingElse() has been interfered by other method");
